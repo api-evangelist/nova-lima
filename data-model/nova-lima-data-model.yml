@@ -1,0 +1,103 @@
+generated: '2026-07-20'
+method: derived
+source: https://runrun.it/api/documentation
+note: >-
+  Entity graph derived from the documented REST resource groups and the
+  id-reference fields visible in documented payloads (e.g. a task references
+  board, board_stage, project, client, assignees, user). Runrun.it does not
+  publish an OpenAPI document, so relationships are inferred from the API
+  reference and example payloads rather than from schema $refs.
+entities:
+  - name: task
+    endpoint: /api/v1.0/tasks
+    relationships:
+      - type: belongs_to
+        target: board
+        via: board
+      - type: belongs_to
+        target: board_stage
+        via: board_stage
+      - type: belongs_to
+        target: project
+        via: project
+      - type: belongs_to
+        target: user
+        via: user
+      - type: has_many
+        target: assignment
+        via: assignments
+      - type: has_many
+        target: comment
+        via: comments
+      - type: has_many
+        target: document
+        via: documents
+      - type: has_many
+        target: descendant
+        via: descendants
+      - type: has_many
+        target: checklist
+        via: checklist
+      - type: has_many
+        target: task_evaluation
+        via: evaluations
+  - name: project
+    endpoint: /api/v1.0/projects
+    relationships:
+      - type: belongs_to
+        target: client
+        via: client
+      - type: has_many
+        target: task
+        via: tasks
+      - type: has_one
+        target: description
+        via: description
+      - type: has_many
+        target: extra_cost
+        via: extra_costs
+  - name: client
+    endpoint: /api/v1.0/clients
+    relationships:
+      - type: has_many
+        target: project_group
+        via: project_groups
+      - type: has_many
+        target: monthly_budget
+        via: monthly_budgets
+  - name: board
+    endpoint: /api/v1.0/boards
+    relationships:
+      - type: has_many
+        target: board_stage
+        via: stages
+  - name: board_stage
+    endpoint: /api/v1.0/boards/{id}/stages
+    relationships:
+      - type: belongs_to
+        target: board
+        via: board
+  - name: team
+    endpoint: /api/v1.0/teams
+    relationships:
+      - type: has_many
+        target: user
+        via: users
+  - name: user
+    endpoint: /api/v1.0/users
+    relationships:
+      - type: has_many
+        target: user_vacation
+        via: vacations
+      - type: has_many
+        target: demander
+        via: demanders
+  - name: project_template
+    endpoint: /api/v1.0/project_templates
+    relationships:
+      - type: has_many
+        target: task_template
+        via: task_templates
+  - name: enterprise
+    endpoint: /api/v1.0/enterprises/{id}
+    relationships: []

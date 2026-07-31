@@ -1,0 +1,18 @@
+generated: '2026-07-20'
+method: searched
+source: https://runrun.it/api/documentation
+format: http-status
+envelope: JSON
+note: >-
+  Runrun.it does not publish an RFC 9457 problem-details registry; errors are
+  conveyed with standard HTTP status codes and a JSON body. The statuses below
+  are the ones explicitly documented in the API reference.
+problems:
+  - status: 401
+    title: Unauthorized
+    detail: Returned when the App-Key or User-Token header is incorrect or missing.
+    remediation: Send both App-Key and User-Token headers with valid values (Integration and Apps > API and Webhooks).
+  - status: 429
+    title: Too Many Requests
+    detail: Rate limit of 100 requests/minute exceeded. RateLimit-Limit / RateLimit-Remaining / RateLimit-Reset headers are returned.
+    remediation: Wait one minute (until RateLimit-Reset) before making new requests; avoid excessive use to prevent App-Key revocation.

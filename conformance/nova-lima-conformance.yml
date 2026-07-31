@@ -1,0 +1,40 @@
+generated: '2026-07-20'
+method: searched
+source: https://runrun.it/api/documentation , https://runrun.it/.well-known/oauth-authorization-server
+standards:
+  - id: rest-json
+    conforms: true
+    evidence: All responses are valid JSON; resource-oriented REST endpoints under /api/v1.0.
+  - id: oauth2
+    conforms: true
+    evidence: OAuth 2.0 Authorization Server Metadata (RFC 8414) published with authorization_code grant.
+  - id: oauth2.1-pkce
+    conforms: true
+    evidence: code_challenge_methods_supported includes S256 (PKCE required).
+  - id: rfc8414-oauth-as-metadata
+    conforms: true
+    evidence: /.well-known/oauth-authorization-server returns issuer/authorization/token/revocation endpoints.
+  - id: rfc9728-oauth-protected-resource
+    conforms: true
+    evidence: /.well-known/oauth-protected-resource advertises the MCP resource and its authorization servers.
+  - id: rfc7233-range-pagination
+    conforms: true
+    evidence: X-Item-Range item ranges; docs state pagination is based on RFC 7233.
+  - id: rfc5988-web-linking
+    conforms: true
+    evidence: Link header with rel=self|prev|next|last; docs state pagination is based on RFC 5988.
+  - id: iso8601-dates
+    conforms: true
+    evidence: All dates are in ISO 8601 format.
+  - id: mcp
+    conforms: true
+    evidence: Hosted MCP server at https://runrun.it/mcp with OAuth-based authorization.
+  - id: openid-connect
+    conforms: false
+    evidence: No /.well-known/openid-configuration (404).
+  - id: rfc9457-problem-details
+    conforms: false
+    evidence: Error responses are plain JSON with HTTP status codes; application/problem+json is not documented.
+  - id: rfc9116-security-txt
+    conforms: false
+    evidence: /.well-known/security.txt returns 406 (not served).

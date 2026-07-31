@@ -1,0 +1,19 @@
+generated: '2026-07-20'
+method: searched
+source: https://runrun.it/api/documentation
+versioning:
+  scheme: uri-path
+  current: v1.0
+  base_url: https://runrun.it/api/v1.0
+  docs: https://runrun.it/api/documentation
+deprecation:
+  policy_url: null
+  sunset_header: false
+  note: No formal deprecation/sunset (RFC 8594) policy is documented.
+sla:
+  url: null
+  uptime_target: null
+status_page: null
+status_page_note: >-
+  No status page was found (status.runrun.it did not resolve).
+deprecated_operations: []

@@ -1,0 +1,46 @@
+generated: '2026-07-20'
+method: searched
+source: https://www.npmjs.com/ , https://github.com/Runrunit
+notes: >-
+  Runrun.it does not publish an official, documented API client SDK in any
+  registry. The @runrunit npm scope carries a first-party UI package, and the
+  Runrunit GitHub org publishes an api_examples repo (Python usage examples)
+  and their Chrome extension. Several community integrations/MCP wrappers exist
+  and are marked official: false.
+packages:
+  - language: javascript
+    registry: npm
+    name: "@runrunit/runit-ui"
+    url: https://www.npmjs.com/package/@runrunit/runit-ui
+    install: npm install @runrunit/runit-ui
+    official: true
+    version: 0.1.15
+    note: First-party package under the @runrunit npm org scope (UI library; not a documented REST API client SDK).
+  - language: python
+    registry: github
+    name: Runrunit/api_examples
+    url: https://github.com/Runrunit/api_examples
+    install: git clone https://github.com/Runrunit/api_examples
+    official: true
+    note: First-party Python API usage examples (not a packaged SDK).
+  - language: javascript
+    registry: npm
+    name: n8n-nodes-runrunit
+    url: https://www.npmjs.com/package/n8n-nodes-runrunit
+    install: npm install n8n-nodes-runrunit
+    official: false
+    note: Community n8n community-node integration.
+  - language: javascript
+    registry: npm
+    name: runrun-it-mcp
+    url: https://www.npmjs.com/package/runrun-it-mcp
+    install: npm install runrun-it-mcp
+    official: false
+    note: Community MCP server wrapper.
+  - language: javascript
+    registry: npm
+    name: mcp-runrunit
+    url: https://www.npmjs.com/package/mcp-runrunit
+    install: npm install mcp-runrunit
+    official: false
+    note: Community MCP server wrapper.

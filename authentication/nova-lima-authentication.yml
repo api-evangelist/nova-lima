@@ -1,0 +1,45 @@
+generated: '2026-07-20'
+method: searched
+source: https://runrun.it/api/documentation
+docs: https://runrun.it/api/documentation
+summary:
+  types: [apiKey, oauth2]
+  api_key_in: [header]
+  oauth2_flows: [authorizationCode]
+  notes: >-
+    The primary REST API authenticates with two static header credentials:
+    App-Key (identifies the whole account, not changeable through the GUI) and
+    User-Token (unique per user; lets an agent act on behalf of that user).
+    Both headers must be sent on every request; an incorrect App-Key or
+    User-Token returns 401 Unauthorized. API access is a premium feature limited
+    to certain paid plans. Separately, runrun.it operates an OAuth 2.0/2.1
+    authorization server (authorization code + PKCE S256) used by the hosted MCP
+    server and OAuth clients.
+schemes:
+  - name: AppKey
+    type: apiKey
+    in: header
+    parameter_name: App-Key
+    description: Account-level key that identifies the whole account. Cannot be changed through the GUI.
+    sources: [https://runrun.it/api/documentation]
+  - name: UserToken
+    type: apiKey
+    in: header
+    parameter_name: User-Token
+    description: Per-user token allowing an agent to act on behalf of that user.
+    sources: [https://runrun.it/api/documentation]
+  - name: OAuth2
+    type: oauth2
+    flows:
+      - flow: authorizationCode
+        authorizationUrl: https://runrun.it/api/v1.0/oauth/authorize
+        tokenUrl: https://runrun.it/api/v1.0/oauth/token
+        revocationUrl: https://runrun.it/api/v1.0/oauth/revoke
+        registrationUrl: https://runrun.it/mcp/oauth/register
+        pkce: S256
+        scopes:
+          all: Full access (the only scope advertised by the authorization server)
+    sources: [https://runrun.it/.well-known/oauth-authorization-server]
+where_to_get_keys: >-
+  In the Runrun.it app: open "Integration and Apps", find "API and Webhooks",
+  click Open. The App-Key is displayed next to the User-Token.

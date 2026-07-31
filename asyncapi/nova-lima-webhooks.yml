@@ -1,0 +1,89 @@
+generated: '2026-07-20'
+method: searched
+source: https://runrun.it/api/documentation
+docs: https://runrun.it/api/documentation
+spec_type: Webhooks
+transport:
+  delivery: HTTP POST
+  payload: JSON
+  management: >-
+    Webhooks are managed on the "API and Webhooks" page in the Runrun.it app.
+    Create/update a webhook with the + button by selecting an event and the URL
+    that receives the HTTP POST payload; delete with the trash icon.
+payload_shape:
+  envelope_fields: [event, happened_at, performer, data]
+  performer: "{ id, email }"
+  note: "happened_at is an ISO-8601-ish timestamp; data carries the resource (e.g. data.task)."
+events:
+  - event: task:create
+    description: Triggered when a task is created.
+  - event: task:update
+    description: "Triggered when task attributes are updated: title, tags, desired delivery date, desired start date, points, custom fields."
+  - event: task:destroy
+    description: Triggered when a task is deleted.
+  - event: task:deliver
+    description: Triggered when a task is delivered (moved from an open stage to a closed stage).
+  - event: task:reopen
+    description: Triggered when a task is reopened (moved from a closed step to an open step).
+  - event: task:move
+    description: Triggered when a task is moved between stages without changing its state.
+  - event: task:add_manual_work_period
+    description: Triggered when a user adds hours manually to a task.
+  - event: task:remove_manual_work_period
+    description: Triggered when a user removes hours manually from a task.
+  - event: task:change_time_worked
+    description: Triggered when the total time worked on a task changes.
+  - event: task:mark_as_urgent
+    description: Triggered when a task is marked as urgent.
+  - event: task:unmark_as_urgent
+    description: Triggered when a task is unmarked as urgent.
+  - event: task:desired_start_date_upcoming
+    description: Triggered when a task's desired start date is upcoming.
+  - event: task_assignment:play
+    description: Triggered when an assignee clicks the play button.
+  - event: task_assignment:pause
+    description: Triggered when an assignee clicks the pause button.
+  - event: task:change_evaluation_status
+    description: Triggered when the task evaluation status changes.
+  - event: task:evaluations:create
+    description: Triggered when new evaluation requests are created.
+  - event: task:evaluations:reset
+    description: Triggered when existing evaluation requests are requested again.
+  - event: task:evaluations:destroy
+    description: Triggered when existing evaluation requests are deleted.
+  - event: task:evaluation:approve
+    description: Triggered when an evaluation request is approved.
+  - event: task:evaluation:reject
+    description: Triggered when an evaluation request is rejected.
+  - event: task:evaluation:reset
+    description: Triggered when an evaluation request is reset.
+  - event: task:assignments:create
+    description: Triggered when new assignees are added to a task.
+  - event: task:description:update
+    description: Triggered when a task description is updated.
+  - event: task:comment:create
+    description: Triggered when a comment on a task is created by a user.
+  - event: task:comment:update
+    description: Triggered when a comment on a task is edited by a user.
+  - event: project:create
+    description: Triggered when a project is created.
+  - event: project:change_time_worked
+    description: Triggered when the total time worked on a project changes.
+  - event: project:comment:create
+    description: Triggered when a comment on a project is created by a user.
+  - event: project:comment:update
+    description: Triggered when a comment on a project is edited by a user.
+  - event: client:create
+    description: Triggered when a client is created.
+  - event: team:comment:create
+    description: Triggered when a comment on a team bulletin is created by a user.
+  - event: team:comment:update
+    description: Triggered when a comment on a team bulletin is edited by a user.
+  - event: enterprise:comment:create
+    description: Triggered when a comment on the enterprise bulletin is created by a user.
+  - event: enterprise:comment:update
+    description: Triggered when a comment on the enterprise bulletin is edited by a user.
+  - event: document:comment:create
+    description: Triggered when a comment on an attachment is created by a user.
+  - event: document:comment:update
+    description: Triggered when a comment on an attachment is edited by a user.

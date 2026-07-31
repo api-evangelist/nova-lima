@@ -1,0 +1,54 @@
+generated: '2026-07-20'
+method: searched
+source: https://runrun.it/api/documentation
+docs: https://runrun.it/api/documentation
+base_url: https://runrun.it/api/v1.0
+authentication:
+  style: api-key-headers
+  headers: [App-Key, User-Token]
+  also: oauth2 (authorization code + PKCE, used by the MCP server)
+  ref: authentication/nova-lima-authentication.yml
+data_format:
+  request: JSON (form-encoded also accepted for most actions)
+  response: JSON
+  dates: ISO 8601 (time zones honored; URL-encode dates containing special characters like +)
+pagination:
+  style: page-number + offset
+  standards: [RFC 7233, RFC 5988]
+  query_params:
+    - name: page
+      description: Page number, starts at 1. Out-of-range defaults to 1.
+    - name: limit
+      description: Items per page. Default and maximum is 100.
+    - name: offset
+      description: Starting point for data retrieval.
+  response_headers:
+    - name: X-Item-Range
+      description: "Range of items in the response, format: items {first}-{last}/{total}."
+    - name: Link
+      description: Hypermedia navigation links with rel="self"|"prev"|"next"|"last".
+    - name: X-Item-Without-View-Permission
+      description: Optional. Count of items not viewable due to permissions.
+rate_limiting:
+  limit: 100 requests per minute
+  exceeded_status: 429
+  response_headers:
+    - RateLimit-Limit
+    - RateLimit-Remaining
+    - RateLimit-Reset
+  note: Excessive use can result in the offending App-Key being revoked.
+  ref: rate-limits/nova-lima-rate-limits.yml
+idempotency:
+  supported: false
+  note: No idempotency-key mechanism is documented.
+error_envelope:
+  format: JSON
+  note: Standard HTTP status codes; 401 Unauthorized on bad credentials, 429 on rate-limit. See errors/nova-lima-problem-types.yml.
+  ref: errors/nova-lima-problem-types.yml
+webhooks:
+  supported: true
+  ref: asyncapi/nova-lima-webhooks.yml
+versioning:
+  scheme: uri-path
+  current: v1.0
+  ref: lifecycle/nova-lima-lifecycle.yml

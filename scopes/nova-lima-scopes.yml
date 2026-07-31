@@ -1,0 +1,25 @@
+generated: '2026-07-20'
+method: searched
+source: https://runrun.it/.well-known/oauth-authorization-server
+docs: https://runrun.it/api/documentation
+schemes:
+  - name: OAuth2
+    source: https://runrun.it/.well-known/oauth-authorization-server
+    flows:
+      - flow: authorizationCode
+        authorizationUrl: https://runrun.it/api/v1.0/oauth/authorize
+        tokenUrl: https://runrun.it/api/v1.0/oauth/token
+        revocationUrl: https://runrun.it/api/v1.0/oauth/revoke
+        registrationUrl: https://runrun.it/mcp/oauth/register
+        code_challenge_methods: [S256]
+        token_endpoint_auth_methods: [client_secret_basic, client_secret_post, none]
+scopes:
+  - scope: all
+    description: Full access. The authorization server advertises a single coarse-grained scope ("all"); it does not publish a fine-grained scope taxonomy.
+    flows: [authorizationCode]
+    sources: [https://runrun.it/.well-known/oauth-authorization-server]
+notes: >-
+  scopes_supported in the OAuth 2.0 Authorization Server Metadata is ["all"].
+  This is the scope surface used by the hosted MCP server
+  (https://runrun.it/mcp), whose protected-resource metadata also advertises
+  scopes_supported: ["all"].

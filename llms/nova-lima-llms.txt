@@ -1,0 +1,32 @@
+# Runrun.it
+
+> Runrun.it is process and project management software that automates work requests and organizes a team's tasks, projects, and time tracking in one place. It exposes a REST API (v1.0) covering tasks, projects, clients, boards, teams, users, time worked, documents, comments, and evaluations, plus a webhook event system and a hosted, OAuth-protected MCP server. (Company profiled in the API Evangelist network as "nova-lima", the Nova Lima, Brazil headquarters; backed by 500 Global.)
+
+## API
+
+- [Runrun.it REST API v1.0](https://runrun.it/api/documentation): Resource-oriented REST API. Base URL https://runrun.it/api/v1.0. Auth via App-Key + User-Token request headers (premium/paid feature). JSON request/response, ISO 8601 dates, 100 requests/minute rate limit, RFC 7233 + RFC 5988 pagination.
+
+## Authentication
+
+- [API authentication](https://runrun.it/api/documentation): Send App-Key (account) and User-Token (per-user) headers on every request; 401 on invalid credentials.
+- [OAuth authorization server](https://runrun.it/.well-known/oauth-authorization-server): OAuth 2.0/2.1 with authorization_code grant and PKCE (S256). Endpoints: authorize, token, revoke; dynamic client registration at /mcp/oauth/register. Single scope: all.
+
+## MCP
+
+- [Hosted MCP server](https://runrun.it/mcp): OAuth-protected Model Context Protocol server (bearer header, scope "all"), discoverable via /.well-known/oauth-protected-resource.
+
+## Events
+
+- [Webhooks](https://runrun.it/api/documentation): ~35 events (task:create, task:update, task:deliver, task:comment:create, project:create, client:create, and more) delivered as HTTP POST JSON payloads; managed under Integration and Apps > API and Webhooks.
+
+## Docs
+
+- [Help Center](https://help.runrun.it/english): Product help and support.
+- [Developer API reference](https://runrun.it/api/documentation): Full endpoint reference for all resource groups.
+- [Blog](https://blog.runrun.it/): Company and product blog.
+- [Privacy](https://runrun.it/en-US/privacy): Privacy policy.
+- [GitHub org](https://github.com/Runrunit): api_examples (Python), chrome-extension.
+
+## Notes
+
+- Repo artifacts: authentication/, scopes/, conventions/, rate-limits/, asyncapi/ (webhooks), mcp/, packages/, lifecycle/, conformance/, errors/, well-known/, data-model/.

@@ -1,0 +1,1 @@
+{"resources":[{"resource":"https://runrun.it/mcp","authorization_servers":["https://runrun.it/.well-known/oauth-authorization-server"],"bearer_methods_supported":["header"],"scopes_supported":["all"]}]}

@@ -1,0 +1,20 @@
+generated: '2026-07-20'
+method: searched
+source: https://runrun.it/api/documentation
+docs: https://runrun.it/api/documentation
+rate_limits:
+  - scope: global
+    limit_count: 100
+    window: 1m
+    description: Maximum of 100 requests per minute. When exceeded, wait 1 minute before making new requests.
+    exceeded_status: 429
+headers:
+  - name: RateLimit-Limit
+    description: Request limit.
+  - name: RateLimit-Remaining
+    description: Remaining requests before hitting the limit.
+  - name: RateLimit-Reset
+    description: Date when the limit will be restored.
+enforcement: >-
+  Exceeding the limit returns HTTP 429. Excessive use of the API can result in
+  the offending App-Key being revoked to protect service quality for other users.

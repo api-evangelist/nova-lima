@@ -1,20 +1,63 @@
 aid: nova-lima
 name: Nova Lima
-description: Nova Lima is a company surfaced as a portfolio company of 500-global and added to the API
-  Evangelist network as a stub for enrichment. This profile is a lead awaiting the enrichment pipeline.
+description: >-
+  Runrun.it (headquartered in Nova Lima, Brazil, and backed by 500 Global) is
+  process and project management software that automates work requests and
+  organizes a team's tasks, projects, clients, time tracking, and documents in a
+  single place. Its public REST API (v1.0) exposes tasks, projects, boards and
+  board stages, clients, teams, users, comments, documents, evaluations,
+  templates, and time-worked reporting, authenticated with App-Key and
+  User-Token request headers on paid plans. The platform also publishes an
+  OAuth 2.0/2.1 authorization server (authorization code + PKCE), a hosted
+  OAuth-protected MCP server at /mcp, and a webhook event system covering roughly
+  35 task, project, client, team, and comment events.
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://runrun.it/static/images/logo_1200X630.png
 url: https://raw.githubusercontent.com/api-evangelist/nova-lima/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
 x-backed-by:
 - 500-global
-x-tier: stub
-x-tier-reason: portfolio-lead
+x-tier: profiled
+x-tier-reason: portfolio-lead-enriched
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-20'
 tags:
 - Company
-apis: []
+- Project Management
+- Task Management
+- Work Management
+- Productivity
+- Time Tracking
+- Team Collaboration
+- SaaS
+- Brazil
+apis:
+- name: Runrun.it API
+  description: >-
+    Resource-oriented REST API (v1.0) for Runrun.it work and project management:
+    tasks, projects, boards, clients, teams, users, comments, documents,
+    evaluations, and time-worked reporting. JSON, ISO 8601 dates, 100 req/min
+    rate limit, RFC 7233 + RFC 5988 pagination.
+  humanURL: https://runrun.it/api/documentation
+  baseURL: https://runrun.it/api/v1.0
+  properties:
+  - type: Documentation
+    url: https://runrun.it/api/documentation
+  - type: Authentication
+    url: authentication/nova-lima-authentication.yml
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
@@ -23,3 +66,50 @@ maintainers:
 common:
 - type: Website
   url: https://runrun.it
+- type: DeveloperPortal
+  url: https://runrun.it/api/documentation
+- type: Documentation
+  url: https://runrun.it/api/documentation
+- type: APIReference
+  url: https://runrun.it/api/documentation
+- type: Support
+  url: https://help.runrun.it/english
+- type: Blog
+  url: https://blog.runrun.it/
+- type: GitHubOrganization
+  url: https://github.com/Runrunit
+- type: PrivacyPolicy
+  url: https://runrun.it/en-US/privacy
+- type: Authentication
+  url: authentication/nova-lima-authentication.yml
+- type: OAuthScopes
+  url: scopes/nova-lima-scopes.yml
+- type: Conventions
+  url: conventions/nova-lima-conventions.yml
+- type: RateLimits
+  url: rate-limits/nova-lima-rate-limits.yml
+- type: Webhooks
+  url: asyncapi/nova-lima-webhooks.yml
+- type: MCPServer
+  url: mcp/nova-lima-mcp.yml
+- type: Packages
+  url: packages/nova-lima-packages.yml
+- type: Lifecycle
+  url: lifecycle/nova-lima-lifecycle.yml
+- type: Conformance
+  url: conformance/nova-lima-conformance.yml
+- type: ErrorCatalog
+  url: errors/nova-lima-problem-types.yml
+- type: WellKnown
+  url: well-known/nova-lima-well-known.yml
+- type: DataModel
+  url: data-model/nova-lima-data-model.yml
+- type: LLMsTxt
+  url: llms/nova-lima-llms.txt
+- type: DomainSecurity
+  url: security/nova-lima-domain-security.yml
+x-enrichment:
+  date: '2026-07-20'
+  status: enriched
+  artifacts_added: 16
+  pass: local-v1
