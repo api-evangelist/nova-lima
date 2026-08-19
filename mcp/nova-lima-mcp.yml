@@ -9,21 +9,25 @@ server:
   auth:
     type: oauth2
     authorization_server: https://runrun.it/.well-known/oauth-authorization-server
-    bearer_methods_supported: [header]
-    scopes_supported: [all]
+    bearer_methods_supported:
+    - header
+    scopes_supported:
+    - all
     dynamic_client_registration: https://runrun.it/mcp/oauth/register
 evidence:
-  - GET https://runrun.it/mcp returns 401 (OAuth-protected endpoint present)
-  - >-
-    https://runrun.it/.well-known/oauth-protected-resource lists resource
-    "https://runrun.it/mcp" with authorization_servers pointing at the runrun.it
-    OAuth authorization server
-notes: >-
-  Runrun.it operates a first-party, hosted MCP server at https://runrun.it/mcp.
-  It is guarded by the runrun.it OAuth 2.0/2.1 authorization server (authorization
-  code + PKCE S256) and supports dynamic client registration at
-  https://runrun.it/mcp/oauth/register. The tool list is not enumerable without
-  authenticating, but the endpoints and event/webhook + REST surface (see
-  asyncapi/ and the API reference) indicate task, project, client, team, and
-  user management operations. Community MCP wrappers also exist on npm
-  (runrun-it-mcp, mcp-runrunit) — see packages/.
+- GET https://runrun.it/mcp returns 401 (OAuth-protected endpoint present)
+- https://runrun.it/.well-known/oauth-protected-resource lists resource "https://runrun.it/mcp" with authorization_servers
+  pointing at the runrun.it OAuth authorization server
+notes: Runrun.it operates a first-party, hosted MCP server at https://runrun.it/mcp. It is guarded by
+  the runrun.it OAuth 2.0/2.1 authorization server (authorization code + PKCE S256) and supports dynamic
+  client registration at https://runrun.it/mcp/oauth/register. The tool list is not enumerable without
+  authenticating, but the endpoints and event/webhook + REST surface (see asyncapi/ and the API reference)
+  indicate task, project, client, team, and user management operations. Community MCP wrappers also exist
+  on npm (runrun-it-mcp, mcp-runrunit) — see packages/.
+deployment:
+  mode: remote
+  endpoint: https://runrun.it/mcp
+  verified: probed
+  probe: gated
+  checked: '2026-08-12'
+  source: catalog MCP census
