@@ -11,6 +11,17 @@ description: >-
   OAuth 2.0/2.1 authorization server (authorization code + PKCE), a hosted
   OAuth-protected MCP server at /mcp, and a webhook event system covering roughly
   35 task, project, client, team, and comment events.
+deliveryModel:
+  model: library
+  open_source: false
+  commercial: false
+  callable_host: false
+  label: Library · distributed through package registries, no callable service
+  confidence: low
+  source:
+  - none
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: unknown
   onboarding: self-serve
