@@ -2,10 +2,13 @@
   "repo": "nova-lima",
   "feeds": [
     {
-      "source": "https://help.runrun.it/english",
-      "error": "HTTPError"
+      "source": "https://blog.runrun.it/",
+      "feed_url": "https://blog.runrun.it/web-stories/feed/",
+      "title": "",
+      "saved": 0,
+      "method": "discovered"
     }
   ],
   "post_count": 0,
-  "fetched": "2026-10-03T12:30:02Z"
+  "fetched": "2026-10-10T13:15:00Z"
 }
